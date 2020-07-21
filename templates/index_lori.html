@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Airline Delays!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ['Delays', 'Type of Delay'],
+        ['Carrier', ("Carrier Delays " + ": " + resultcarrdelay + "\n")],
+        ['Weather', ("Weather Delays " + ": " + resultweathdelay + "\n")],
+        ['NAS', ("National Aviation Systems Delays " + ": " + resultnasdelay + "\n")],
+        ['Security', ("Security Delays " + ": " + resultsecdelay + "\n")],
+        ['Late Aircraft', ("Aircraft Arriving Late Delays " + ": " + resultlateairdelay + "\n")],
+        ['Cancelled', ("Arrivals Cancelled " + ": " + resultcanceldelay + "\n")],
+        ['Diverted', ("Arrivals Diverted " + ": " + resultdivdelay + "\n")]
+      ]);
+
+      var options = {
+        title: 'Delays by Type'
+      };
+
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      chart.draw(data, options);
+    }
+  </script>
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawVisualization);
+
+    function drawVisualization() {
+      var data = google.visualization.arrayToDataTable([
+        ['Delay Type', 'Carrier', 'Weather', 'NAS', 'Security', 'Late Aircraft', 'Cancelled',  'Diverted', 'Average'],
+        ['Carrier', ("Carrier Delays " + ": " + resultcarrdelay + "\n")],
+        ['Weather', ("Weather Delays " + ": " + resultweathdelay + "\n")],
+        ['NAS', ("National Aviation Systems Delays " + ": " + resultnasdelay + "\n")],
+        ['Security', ("Security Delays " + ": " + resultsecdelay + "\n")],
+        ['Late Aircraft', ("Aircraft Arriving Late Delays " + ": " + resultlateairdelay + "\n")],
+        ['Cancelled', ("Arrivals Cancelled " + ": " + resultcanceldelay + "\n")],
+        ['Diverted', ("Arrivals Diverted " + ": " + resultdivdelay + "\n"),    
+      ]);
+
+      var options = {
+        title: 'Delays by Airline and Airport',
+        vAxis: { title: 'Minutes Delayd' },
+        hAxis: { title: 'Type of Delay' },
+        seriesType: 'bars',
+        series: { 5: { type: 'line' } }
+      };
+
+      var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+      chart.draw(data, options);
+    }
+  </script>
+</head>
+
+<body>
+  <div class="container text-center">
+    <h1 class="jumbotron">U. S. Airline Delays</h1>
+    <div class="row">
+      <div class="col-md-2">
+        <div class="well">
+          <h5>Select Airport:</h5>
+          <select id="selAirport" onchange="optionChanged(this.value)"></select>
+        </div>
+        </div>
+        <div class="col-md-6">
+          <div class="well">
+            <h5>Select Carrier:</h5>
+            <select id="selAirline" onchange="optionChanged(this.value)"></select>
+          </div>
+          </div>
+          <div class="col-md-2">
+            <div class="well">
+              <h5>Select Month:</h5>
+              <select id="selMonth" onchange="optionChanged(this.value)"></select>
+            </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="well">
+                <h5>Select Year:</h5>
+                <select id="selYear" onchange="optionChanged(this.value)"></select>
+              </div>
+            </div>
+
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Airline Delay Info</h3>
+                </div>
+                <div id="sample-metadata" class="panel-body"></div>
+              </div>
+            </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="piechart" style="width: 900px; height: 500px;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="chart_div" style="width: 900px; height: 500px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- D3 JavaScript -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
+  <!--script type="text/javascript" src="static/charts.js"></script-->
+  <script src="../static/air_delays.js"></script>
+  <script src="../static/charts.js"></script>
+  <script src="{{ url_for('static', filename='charts.js') }}"></script>
+  <script src="{{ url_for('static', filename='air_delays.js') }}"></script>
+
+
+
+
+</body>
+
+</html>

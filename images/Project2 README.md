@@ -1,16 +1,16 @@
-# Project 2:  Tell a Story with Data.
-
-### Project Team 7:
+# Tell a Story with Data.
+### Team7-Project-2
+Project Team:
 * Lori Shannon
 * Philip Hill
 * Rob Gauer
 # 
-# U.S. AIRLINE DELAYS 
+# Team 7 Project 2 - U.S. Airline Delays 
 
 ![flight-delays-image.jpeg](images/flight-delays-image.jpeg)
 
-# Story Objective
-  Our team created a web visualization dashboard that lets you the consumer select any U.S. airport, airline, year, and month interactively and explore the data. Upon selection the dashboard presents the data visualizations showing the history of delay measures used by the airline industry to metric their overall performance.
+# Story - U.S. Airline Delays
+  Our team created a web visualization dashboard that lets you the consumer select any U.S. airport, airline, year, and month. The dashboard then presents the history of delay measures used by the airline industry to metric their overall performance.
 
 # Comparitive Analysis
 The dashboard is a tool for business, government, the airlines, or you the general consumer to perform a data lookup of how the different types of airline delays impact overall on time performance.
@@ -25,7 +25,6 @@ The dashboard is a tool for business, government, the airlines, or you the gener
  
 # Team Repository
   * https://https://github.com/Phassoc/Team7-Project-2
-  * July 2020.
     
 
 # Data Sources
@@ -34,9 +33,9 @@ The dashboard is a tool for business, government, the airlines, or you the gener
    * Link: https://www.kaggle.com/anshuls235/airline-delay-causes
    * Data file: https://www.kaggle.com/anshuls235/airline-delay-causes?select=894233989_32020_056_airline_delay_causes.csv 
            
-# Data Coding Approach - Requirements Overview
+# Requirements Overview
 1. Visualization includes:
-    * Python, Flask, HTML/CSS, JavaScript, and database MongoDB. 
+    * Python Flask, HTML/CSS, JavaScript, and one database (MongoDB). 
 
 2. Your project should fall into one of the below four tracks: 
    * A dashboard page with multiple charts that update from the same data.
@@ -53,33 +52,26 @@ The dashboard is a tool for business, government, the airlines, or you the gener
 
 6. Your final visualization should ideally include at least three views. 
    * Airline Delay Information.
-   * Google Pie Chart.
-   * Google Bar Chart.
+   * Google Chart.
+   * Google Chart.
 
-# Data Manipulation and Functional Work Flow 
+# Functional Work Flow 
   1. Dataset CSV file is reviewed and prepared for MongoDB. 
   2. Python insert_data.py. File creates connection to MongoDB. Selects collection to use. Populates CSV file to JSON and reads the data records into MongoDB.
   3. Python app.py. File sets up MongoDB client for pymongo connection and reads collection. Uses Flask to create app.route/ and app.route/dashboard for index.html presentation.
   4. JavaScript air_delays.js. User Interaction - Creates and constructs the selection criteria requested by the end user for the data to be presented.
   5. Index.html. Presents the data visualization of the request to the end user.
 
-# Data Visualizations
+# Visualizations
   * Home Page and User Selection Dropdown Menu
-
     ![home-page-and-user-selection-menu.PNG](images/home-page-and-user-selection-menu.PNG)
-  
   * Airline Delay Information
-
     ![airline-delay-information.PNG](images/airline-delay-information.PNG)
+  * Google Chart
+    ![flight-delays-image.jpeg](images/flight-delays-image.jpeg)
+  * Google Chart
+    ![flight-delays-image.jpeg](images/flight-delays-image.jpeg)
 
-  * Google Pie Chart
-
-    ![airline-delays-google-pie-chart.PNG](images/airline-delays-google-pie-chart.PNG)
-  
-
-# 
-### Data Visualization Project 2
- Team 7:  Lori Shannon, Philip Hill, Rob Gauer. 
 # 
 
 # 

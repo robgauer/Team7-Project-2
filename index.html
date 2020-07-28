@@ -7,15 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Flight Delays!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">google.charts.load('current', { 'packages': ['corechart'] });</script>
 
 </head>
 
 <body>
-  <div class="container text-center">
+  <div class="container text-center" style="background-image: url('flightboard.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
     <h1 class="jumbotron">U. S. Airline Delays</h1>
+    <h3 style="color: white; padding-bottom: 10px;">Use the options below to see the flight delays by Airport, Airline, Month and Year.<br />Delay information is displayed in minutes by type of delay.</h3>
     <div class="row">
       <div class="col-md-2">
         <div class="well">
@@ -50,46 +49,68 @@
               </div>
             </div>
 
-            <div class="row">
+            <div class="row; align-items-center">
               <div class="col-md-12">
-                <div id="piechart" style="width: 1200px; height: 700px;"></div>
+                <div id="piechart_div"></div>   
               </div>
             </div>
-
-          
+            <div class="; align-items-center">
+              <div class="col-md-12">
+                <div id="barchart_div"></div>   
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12"><br />
+                <p class="lead" style="color: white; text-align: left;"><strong>Delay Definitions:</strong>
+                  <ul class="text-left" style="color: white;"><li>Air Carrier: The cause of the cancellation or delay was due to circumstances within the airline's control (e.g. maintenance or crew problems, aircraft cleaning, baggage loading, fueling, etc.).</li>
+            <li>Extreme Weather: Significant meteorological conditions (actual or forecasted) that, in the judgment of the carrier, delays or prevents the operation of a flight such as tornado, blizzard or hurricane.</li>
+            <li>National Aviation System (NAS): Delays and cancellations attributable to the national aviation system that refer to a broad set of conditions, such as non-extreme weather conditions, airport operations, heavy traffic volume, and air traffic control.</li>
+            <li>Late-arriving aircraft: A previous flight with same aircraft arrived late, causing the present flight to depart late.</li>
+            <li>Security: Delays or cancellations caused by evacuation of a terminal or concourse, re-boarding of aircraft because of security breach, inoperative screening equipment and/or long lines in excess of 29 minutes at screening areas.</li></ul></p>
+              </div>
+            </div>
     </div>
   </div>
   <!-- D3 JavaScript -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.3/d3.min.js"></script>
-  <script src="static/charts.js"></script>
-
-  <script type="text/javascript">
-    // google.charts.load('current', { 'packages': ['corechart'] });
-    // google.charts.setOnLoadCallback(drawChart); 
-
-    function drawChart() {
-      var data = google.visualization.arrayToDataTable([
-        ['Delays', 'Type of Delay'],
-        ['Carrier Delay', parseInt(d3.select("#cdelay").text().split(" : ")[1])],
-        ['Weather Delay', parseInt(d3.select("#wdelay").text().split(" : ")[1])],
-        ['NAS Delay', parseInt(d3.select("#ndelay").text().split(" : ")[1])],
-        ['Security Delay', parseInt(d3.select("#sdelay").text().split(" : ")[1])],
-        ['Late Aircraft Delay', parseInt(d3.select("#aldelay").text().split(" : ")[1])],
-        ['Flight Cancelled', parseInt(d3.select("#candelay").text().split(" : ")[1])],
-        ['Flight Diverted', parseInt(d3.select("#divdelay").text().split(" : ")[1])]
-      ]);
-
-        console.log(data)
-
-      var options = {title: 'Delays in Minutes by Type'};
-
-      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-      chart.draw(data, options);
-    }
-  </script> 
-
 <script src="static/air_delays.js"></script>
+<script type="text/javascript">
+
+  // Load Charts and the corechart and barchart packages.
+  google.charts.load('current', {'packages':['corechart']});
+
+  // Draw the pie chart and bar chart when Charts is loaded.
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+var data = new google.visualization.DataTable();
+data.addColumn('string', 'Type of Delay');
+data.addColumn('number', 'Delay in Minutes');
+data.addRows([
+['Carrier Delay', parseInt(d3.select("#cdelay").text().split(" : ")[1])],
+['Weather Delay', parseInt(d3.select("#wdelay").text().split(" : ")[1])],
+['NAS Delay', parseInt(d3.select("#ndelay").text().split(" : ")[1])],
+['Security Delay', parseInt(d3.select("#sdelay").text().split(" : ")[1])],
+['Late Aircraft Delay', parseInt(d3.select("#aldelay").text().split(" : ")[1])],
+['Flight Cancelled', parseInt(d3.select("#candelay").text().split(" : ")[1])],
+['Flight Diverted', parseInt(d3.select("#divdelay").text().split(" : ")[1])]
+]);
+
+var piechart_options = {title:'Percentage of Delays in Minutes by Type',
+           width:1100,
+           height:300};
+var piechart = new google.visualization.PieChart(document.getElementById('piechart_div'));
+piechart.draw(data, piechart_options);
+
+var barchart_options = {title:'Delays by Type in Minutes',
+           width:1100,
+           height:300,
+           legend: 'none'};
+var barchart = new google.visualization.BarChart(document.getElementById('barchart_div'));
+barchart.draw(data, barchart_options);
+}
+</script>
 </body>
 
 </html>

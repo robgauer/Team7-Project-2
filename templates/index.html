@@ -7,43 +7,44 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Flight Delays!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/style.css">
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 
 <body>
   <div class="container text-center" style="background-image: url('flightboard.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
-    <h1 class="jumbotron">U. S. Airline Delays</h1>
-    <h3 style="color: white; padding-bottom: 10px;">Use the options below to see the flight delays by Airport, Airline, Month and Year.<br />Delay information is displayed in minutes by type of delay.</h3>
+    <h1 class="jumbotron"><strong>U.S. AIRLINE DELAYS</strong></h1>
+    <h3 style="color: black; padding-bottom: 10px;">Use the options below to see the flight delays by Airport, Airline, Month and Year.<br />Delay information is displayed in minutes by type of delay.</h3>
     <div class="row">
       <div class="col-md-2">
         <div class="well">
-          <h5>Select Airport:</h5>
+          <h5><strong>Select Airport:</strong></h5>
           <select id="selAirport" onchange="optionChanged()"></select>
         </div>
         </div>
         <div class="col-md-6">
           <div class="well">
-            <h5>Select Carrier:</h5>
+            <h5><strong>Select Carrier:</strong></h5>
             <select id="selAirline" onchange="optionChanged()"></select>
           </div>
           </div>
           <div class="col-md-2">
             <div class="well">
-              <h5>Select Month:</h5>
+              <h5><strong>Select Month:</strong></h5>
               <select id="selMonth" onchange="optionChanged()"></select>
             </div>
             </div>
             <div class="col-md-2">
               <div class="well">
-                <h5>Select Year:</h5>
+                <h5><Strong>Select Year</Strong></h5>
                 <select id="selYear" onchange="optionChanged()"></select>
               </div>
             </div>
 
               <div class="panel panel-primary">
                 <div class="panel-heading">
-                  <h3 class="panel-title">Airline Delay Info</h3>
+                  <h3 class="panel-title"><Strong>Airline Delay Information</Strong></h3>
                 </div>
                 <div id="sample-metadata" class="panel-body"></div>
               </div>
@@ -61,8 +62,8 @@
             </div>
             <div class="row">
               <div class="col-md-12"><br />
-                <p class="lead" style="color: white; text-align: left;"><strong>Delay Definitions:</strong>
-                  <ul class="text-left" style="color: white;"><li>Air Carrier: The cause of the cancellation or delay was due to circumstances within the airline's control (e.g. maintenance or crew problems, aircraft cleaning, baggage loading, fueling, etc.).</li>
+                <p class="lead" style="color: black; text-align: left;"><strong>Delay Definitions:</strong>
+                  <ul class="text-left" style="color: black;"><li>Air Carrier: The cause of the cancellation or delay was due to circumstances within the airline's control (e.g. maintenance or crew problems, aircraft cleaning, baggage loading, fueling, etc.).</li>
             <li>Extreme Weather: Significant meteorological conditions (actual or forecasted) that, in the judgment of the carrier, delays or prevents the operation of a flight such as tornado, blizzard or hurricane.</li>
             <li>National Aviation System (NAS): Delays and cancellations attributable to the national aviation system that refer to a broad set of conditions, such as non-extreme weather conditions, airport operations, heavy traffic volume, and air traffic control.</li>
             <li>Late-arriving aircraft: A previous flight with same aircraft arrived late, causing the present flight to depart late.</li>
@@ -111,6 +112,16 @@ var barchart = new google.visualization.BarChart(document.getElementById('barcha
 barchart.draw(data, barchart_options);
 }
 </script>
+
+<!-- Footer -->
+<footer class="page-footer font-small blue"><br><br>
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© Copyright 2020 Project 2 Team 7:  Lori Shannon, Philip Hill, Rob Gauer.<br> 
+      <a href="index.html"> <strong>U.S. Airline Flight Delay Information Reference</strong></a><br>
+      <a href="index.html">  <strong>Data Science Interactive Visualizations - Tell a Story with Data</strong><br><br><br></a>
+  </div>
+</footer>  
+
 </body>
 
 </html>
